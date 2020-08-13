@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/turret_upgrade.wav-8dea681354854e4dbb2703bf4f7460f0.sample"
+
+[deps]
+
+source_file="res://audio/sounds/turret_upgrade.wav"
+dest_files=[ "res://.import/turret_upgrade.wav-8dea681354854e4dbb2703bf4f7460f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

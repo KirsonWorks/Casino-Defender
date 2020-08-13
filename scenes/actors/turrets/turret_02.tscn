@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/turrets/turret02.dae" type="PackedScene" id=1]
+[ext_resource path="res://scripts/actors/turret.gd" type="Script" id=2]
+
+[node name="turret_02" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="shot_bind1" type="Spatial" parent="gun" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274, 0.531, -0.165 )
+
+[node name="shot_bind2" type="Spatial" parent="gun" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.274, 0.531, -0.165 )

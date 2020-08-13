@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/common/post_effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/splash/splash_base.gd" type="Script" id=3]
+
+[node name="splash_base" type="Node"]
+script = ExtResource( 3 )
+
+[node name="logo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="post_effect" parent="." instance=ExtResource( 1 )]
+pause_mode = 2

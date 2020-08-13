@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/ui/ui_slot_base.gd" type="Script" id=1]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=2]
+
+[node name="ui_slot_base" type="Control"]
+margin_right = 130.0
+margin_bottom = 54.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_rect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/ui_slot_array.tscn" type="PackedScene" id=1]
+
+[node name="ui_slot_bool" instance=ExtResource( 1 )]
+margin_right = 99.0
+data = [ "НЕТ", "ДА" ]
+cycle = true
+
+[node name="ui_label" parent="." index="2"]
+text = "NO"

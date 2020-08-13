@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/actors/shots/shot_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/sprites/bullet.png" type="Texture" id=2]
+[ext_resource path="res://scripts/actors/shots/bullet.gd" type="Script" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+render_priority = 3
+flags_transparent = true
+flags_unshaded = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+
+[node name="shot_bullet" instance=ExtResource( 1 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="quad1" type="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 0.6, 0, -1.66667, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="quad2" type="MeshInstance" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, -1, 0.6, -4.37114e-08, -2.62268e-08, -4.37114e-08, -1.66667, 1.91069e-15, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null

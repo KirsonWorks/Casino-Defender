@@ -1,0 +1,564 @@
+[gd_scene load_steps=43 format=2]
+
+[ext_resource path="res://scenes/common/post_effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/game/scene_game.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/battle_area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonts/font_medium.tres" type="DynamicFont" id=4]
+[ext_resource path="res://textures/sprites/ui/ui_upgrade_h.png" type="Texture" id=5]
+[ext_resource path="res://textures/sprites/ui/ui_delete.png" type="Texture" id=6]
+[ext_resource path="res://scenes/ui/ui_menu_item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=8]
+[ext_resource path="res://scripts/ui/ui_menu.gd" type="Script" id=9]
+[ext_resource path="res://textures/sprites/ui/ui_play.png" type="Texture" id=10]
+[ext_resource path="res://textures/sprites/ui/ui_play_h.png" type="Texture" id=14]
+[ext_resource path="res://textures/sprites/ui/ui_play_d.png" type="Texture" id=15]
+[ext_resource path="res://textures/sprites/ui/ui_upgrade_d.png" type="Texture" id=16]
+[ext_resource path="res://textures/sprites/ui/ui_delete_h.png" type="Texture" id=17]
+[ext_resource path="res://textures/sprites/ui/ui_upgrade.png" type="Texture" id=18]
+[ext_resource path="res://textures/sprites/ui/ui_delete_d.png" type="Texture" id=19]
+[ext_resource path="res://textures/sprites/ui/ui_turret01_h.png" type="Texture" id=20]
+[ext_resource path="res://textures/sprites/ui/ui_turret01_d.png" type="Texture" id=21]
+[ext_resource path="res://textures/sprites/ui/ui_turret02_h.png" type="Texture" id=22]
+[ext_resource path="res://textures/sprites/ui/ui_turret01.png" type="Texture" id=23]
+[ext_resource path="res://textures/sprites/ui/ui_turret02.png" type="Texture" id=24]
+[ext_resource path="res://textures/sprites/ui/ui_turret02_d.png" type="Texture" id=25]
+[ext_resource path="res://textures/sprites/ui/ui_turret03_d.png" type="Texture" id=26]
+[ext_resource path="res://textures/sprites/ui/ui_turret03.png" type="Texture" id=27]
+[ext_resource path="res://textures/sprites/ui/ui_turret03_h.png" type="Texture" id=28]
+[ext_resource path="res://textures/sprites/ui/ui_play_p.png" type="Texture" id=29]
+[ext_resource path="res://scripts/common/camera.gd" type="Script" id=30]
+[ext_resource path="res://textures/sprites/ui/ui_upgrade_p.png" type="Texture" id=32]
+[ext_resource path="res://textures/sprites/ui/ui_delete_p.png" type="Texture" id=33]
+[ext_resource path="res://textures/sprites/ui/ui_money.png" type="Texture" id=34]
+[ext_resource path="res://textures/sprites/ui/ui_heart.png" type="Texture" id=35]
+[ext_resource path="res://textures/sprites/ui/ui_wave.png" type="Texture" id=36]
+[ext_resource path="res://audio/music/01.ogg" type="AudioStream" id=37]
+[ext_resource path="res://audio/music/02.ogg" type="AudioStream" id=38]
+[ext_resource path="res://textures/sprites/ui/ui_turret01_t.png" type="Texture" id=39]
+[ext_resource path="res://textures/sprites/ui/ui_turret03_t.png" type="Texture" id=40]
+[ext_resource path="res://textures/sprites/ui/ui_turret02_t.png" type="Texture" id=41]
+[ext_resource path="res://fonts/font_small.tres" type="DynamicFont" id=42]
+[ext_resource path="res://textures/sprites/ui/ui_menu.png" type="Texture" id=43]
+[ext_resource path="res://textures/sprites/ui/ui_menu_p.png" type="Texture" id=44]
+
+[sub_resource type="Animation" id=1]
+resource_name = "end_wave"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ambience:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -40.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dark:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1.07177 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dark:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "battle_end_wave"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ambience:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dark:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.279, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("dark:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+
+[node name="scene_game" type="Node"]
+script = ExtResource( 2 )
+scene_fade_duration = 2.5
+scene_start_fade_type = 0
+scene_finish_fade_type = 0
+
+[node name="3d" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vp" type="Viewport" parent="3d"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+msaa = 1
+hdr = false
+render_target_clear_mode = 1
+render_target_update_mode = 3
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+physics_object_picking = true
+gui_snap_controls_to_pixels = false
+shadow_atlas_size = 512
+
+[node name="cam_rot" type="Spatial" parent="3d/vp"]
+
+[node name="camera" type="Camera" parent="3d/vp/cam_rot"]
+transform = Transform( 1, 5.33114e-09, 5.20481e-09, -7.45058e-09, 0.715534, 0.698578, 0, -0.698578, 0.715534, 0, 18, 21 )
+current = true
+fov = 45.0
+script = ExtResource( 30 )
+
+[node name="interpolated_camera" type="InterpolatedCamera" parent="3d/vp/cam_rot"]
+current = true
+fov = 45.0
+target = NodePath("../camera")
+enabled = true
+
+[node name="battle_area" parent="3d/vp" instance=ExtResource( 3 )]
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="layout" type="Control" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="ColorRect" parent="ui/layout"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -58.0
+margin_right = 2.0
+margin_bottom = 60.0
+color = Color( 1, 1, 1, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_menu" type="TextureButton" parent="ui/layout/menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture_normal = ExtResource( 43 )
+texture_pressed = ExtResource( 44 )
+texture_hover = ExtResource( 43 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="control_panel" type="ColorRect" parent="ui/layout"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -62.0
+margin_right = 71.0
+mouse_filter = 1
+color = Color( 1, 1, 1, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_play" type="TextureButton" parent="ui/layout/control_panel"]
+margin_left = 4.0
+margin_right = 68.0
+margin_bottom = 65.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 29 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 15 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="turret_panel" type="ColorRect" parent="ui/layout"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -168.0
+margin_top = -62.0
+margin_right = 168.0
+color = Color( 1, 1, 1, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb" type="HBoxContainer" parent="ui/layout/turret_panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_turret1" type="TextureButton" parent="ui/layout/turret_panel/hb"]
+margin_right = 64.0
+margin_bottom = 64.0
+disabled = true
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 23 )
+texture_pressed = ExtResource( 39 )
+texture_hover = ExtResource( 20 )
+texture_disabled = ExtResource( 21 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_turret2" type="TextureButton" parent="ui/layout/turret_panel/hb"]
+margin_left = 74.0
+margin_right = 138.0
+margin_bottom = 64.0
+disabled = true
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 41 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 25 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_turret3" type="TextureButton" parent="ui/layout/turret_panel/hb"]
+margin_left = 148.0
+margin_right = 212.0
+margin_bottom = 64.0
+disabled = true
+toggle_mode = true
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 28 )
+texture_disabled = ExtResource( 26 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_upgrade" type="TextureButton" parent="ui/layout/turret_panel/hb"]
+margin_left = 222.0
+margin_right = 270.0
+margin_bottom = 64.0
+disabled = true
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 16 )
+stretch_mode = 1
+
+[node name="btn_delete" type="TextureButton" parent="ui/layout/turret_panel/hb"]
+margin_left = 280.0
+margin_right = 328.0
+margin_bottom = 64.0
+disabled = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 33 )
+texture_hover = ExtResource( 17 )
+texture_disabled = ExtResource( 19 )
+
+[node name="info_panel" type="ColorRect" parent="ui/layout"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -167.0
+margin_top = -207.0
+margin_right = 168.0
+margin_bottom = -62.0
+color = Color( 0.235294, 0.235294, 0.235294, 0.419608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="ui/layout/info_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_right = -14.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 42 )
+text = "Цена: 100
+Радиус: 2
+Урон: 20
+Скорость: 1.5
+"
+
+[node name="texture_cash" type="TextureRect" parent="ui/layout"]
+margin_left = 32.0
+margin_top = 26.0
+margin_right = 80.0
+margin_bottom = 74.0
+texture = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_heart" type="TextureRect" parent="ui/layout"]
+margin_left = 32.0
+margin_top = 73.0
+margin_right = 80.0
+margin_bottom = 121.0
+texture = ExtResource( 35 )
+
+[node name="texture_waves" type="TextureRect" parent="ui/layout"]
+margin_left = 32.0
+margin_top = 120.0
+margin_right = 80.0
+margin_bottom = 168.0
+texture = ExtResource( 36 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cash" type="Label" parent="ui/layout"]
+margin_left = 96.5125
+margin_top = 26.5125
+margin_right = 233.512
+margin_bottom = 64.5125
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.215686, 0.215686, 0.215686, 0.439216 )
+text = "100"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="Label" parent="ui/layout"]
+margin_left = 97.5125
+margin_top = 74.5125
+margin_right = 187.512
+margin_bottom = 112.512
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.215686, 0.215686, 0.215686, 0.439216 )
+text = "20"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="waves" type="Label" parent="ui/layout"]
+margin_left = 97.5125
+margin_top = 121.512
+margin_right = 184.512
+margin_bottom = 159.512
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.215686, 0.215686, 0.215686, 0.439216 )
+text = "-1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="post_effect" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
+
+[node name="confirm" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="menu_game_over" type="Control" parent="confirm"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.94803
+margin_bottom = -1.948
+theme = ExtResource( 8 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+vertical = false
+
+[node name="item_yes" parent="confirm/menu_game_over" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 76.0
+margin_top = -20.0
+margin_right = 147.0
+margin_bottom = 25.0
+title = "YES"
+
+[node name="item_no" parent="confirm/menu_game_over" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -143.0
+margin_top = -20.0
+margin_right = -73.0
+margin_bottom = 25.0
+title = "NO"
+
+[node name="label" type="Label" parent="confirm/menu_game_over"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -75.0
+margin_bottom = -37.0
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "GAME_OVER"
+align = 1
+valign = 1
+
+[node name="menu_exit" type="Control" parent="confirm"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+vertical = false
+
+[node name="item_no" parent="confirm/menu_exit" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -143.0
+margin_top = -20.0
+margin_right = -73.0
+margin_bottom = 25.0
+title = "NO"
+
+[node name="item_yes" parent="confirm/menu_exit" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 76.0
+margin_top = -20.0
+margin_right = 147.0
+margin_bottom = 25.0
+title = "YES"
+
+[node name="label" type="Label" parent="confirm/menu_exit"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -75.0
+margin_bottom = -37.0
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "EXIT_TO_MENU_QUEST"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "end_wave"
+anims/end_wave = SubResource( 1 )
+anims/start_wave = SubResource( 2 )
+
+[node name="ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+volume_db = -40.0
+autoplay = true
+bus = "Music"
+
+[node name="dark" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+bus = "Music"
+[connection signal="change_health" from="3d/vp/battle_area" to="." method="_on_change_health"]
+[connection signal="change_money" from="3d/vp/battle_area" to="." method="_on_change_money"]
+[connection signal="change_selected_turret" from="3d/vp/battle_area" to="." method="_on_battle_area_change_selected_turret"]
+[connection signal="change_tool_mode" from="3d/vp/battle_area" to="." method="_on_battle_area_change_tool_mode"]
+[connection signal="change_wave" from="3d/vp/battle_area" to="." method="_on_change_wave"]
+[connection signal="end_wave" from="3d/vp/battle_area" to="." method="_on_battle_area_end_wave"]
+[connection signal="button_up" from="ui/layout/menu/btn_menu" to="." method="_on_btn_menu_up"]
+[connection signal="button_up" from="ui/layout/control_panel/btn_play" to="." method="_on_btn_play_up"]
+[connection signal="mouse_entered" from="ui/layout/control_panel/btn_play" to="." method="_on_btn_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/control_panel/btn_play" to="." method="_on_btn_mouse_exited"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret1" to="." method="_on_btn_mouse_entered"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret1" to="." method="_on_btn_turret1_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/turret_panel/hb/btn_turret1" to="." method="_on_btn_mouse_exited"]
+[connection signal="toggled" from="ui/layout/turret_panel/hb/btn_turret1" to="." method="_on_btn_turret1_toggled"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret2" to="." method="_on_btn_mouse_entered"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret2" to="." method="_on_btn_turret2_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/turret_panel/hb/btn_turret2" to="." method="_on_btn_mouse_exited"]
+[connection signal="toggled" from="ui/layout/turret_panel/hb/btn_turret2" to="." method="_on_btn_turret2_toggled"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret3" to="." method="_on_btn_mouse_entered"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_turret3" to="." method="_on_btn_turret3_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/turret_panel/hb/btn_turret3" to="." method="_on_btn_mouse_exited"]
+[connection signal="toggled" from="ui/layout/turret_panel/hb/btn_turret3" to="." method="_on_btn_turret3_toggled"]
+[connection signal="button_up" from="ui/layout/turret_panel/hb/btn_upgrade" to="." method="_on_btn_upgrade_up"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_upgrade" to="." method="_on_btn_upgrade_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/turret_panel/hb/btn_upgrade" to="." method="_on_btn_mouse_exited"]
+[connection signal="button_up" from="ui/layout/turret_panel/hb/btn_delete" to="." method="_on_btn_delete_up"]
+[connection signal="mouse_entered" from="ui/layout/turret_panel/hb/btn_delete" to="." method="_on_btn_delete_mouse_entered"]
+[connection signal="mouse_exited" from="ui/layout/turret_panel/hb/btn_delete" to="." method="_on_btn_mouse_exited"]
+[connection signal="action" from="confirm/menu_game_over/item_yes" to="." method="_on_game_over_yes_action"]
+[connection signal="action" from="confirm/menu_game_over/item_no" to="." method="_on_game_over_no_action"]
+[connection signal="action" from="confirm/menu_exit/item_no" to="." method="_on_menu_exit_no_action"]
+[connection signal="action" from="confirm/menu_exit/item_yes" to="." method="_on_exit_menu_yes_action"]

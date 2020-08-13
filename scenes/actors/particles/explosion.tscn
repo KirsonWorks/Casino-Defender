@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/actors/particles/particle_explosion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/particles/particle_explosion2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/actors/explosion.gd" type="Script" id=3]
+[ext_resource path="res://audio/sounds/fx/boom.wav" type="AudioStream" id=4]
+
+[node name="explosion" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="fire" parent="." instance=ExtResource( 1 )]
+
+[node name="smoke" parent="." instance=ExtResource( 2 )]
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -8.0
+bus = "Sounds"

@@ -1,0 +1,31 @@
+keys;en;ru
+NEWGAME;NEW GAME;НОВАЯ ИГРА
+SETTINGS;SETTINGS;НАСТРОЙКИ
+AUTHOR;AUTHOR;АВТОР
+EXIT;EXIT;ВЫХОД
+AUDIO;AUDIO;АУДИО
+SOUNDS;SOUNDS;ЗВУКИ
+MUSIC;MUSIC;МУЗЫКА
+VIDEO;VIDEO;ВИДЕО
+RESOLUTION;RESOLUTION;РАЗРЕШЕНИЕ
+FULLSCREEN;FULLSCREEN;ПОЛНЫЙ ЭКРАН
+CHANGEHINT;LEFT, RIGHT KEYS OR MOUSE WHEEL FOR CHANGING;КЛАВИШИ ЛЕВО, ПРАВО ИЛИ КОЛЕСО МЫШИ ДЛЯ НАСТРОЙКИ
+BACK;BACK;НАЗАД
+APPLY;APPLY;ПРИМЕНИТЬ
+DEFAULT;DEFAULT;ПО УМОЛЧАНИЮ
+YES;YES;ДА
+NO;NO;НЕТ
+PROGRAMMER;PROGRAMMER;ПРОГРАММИРОВАНИЕ
+AUTHOR_NAME;KIRILL [KIRSON] KHOROBRYKH;КИРИЛЛ [KIRSON] ХОРОБРЫХ
+CONTACTS;CONTACTS;КОНТАКТЫ
+CONTACTS_LINE;KIRSON@MAIL.COM;KIRSON@MAIL.COM
+SPECIAL_FOR;SPECIAL FOR;СПЕЦИАЛЬНО ДЛЯ
+SPECIAL_FOR_LINE;IGDC.RU;IGDC.RU
+LEAVE_GAME_QUEST;ARE YOU SURE WANT TO LEAVE THE GAME?;ВЫ ДЕЙСТВИТЕЛЬНО ХОТИТЕ ПОКИНУТЬ ИГРУ?
+EXIT_TO_MENU_QUEST;EXIT TO MAIN MENU?;ВЫЙТИ В ГЛАВНОЕ МЕНЮ?
+GAME_OVER;GAME OVER… REPEAT?;ВЫ ПРОИГРАЛИ… ПОВТОРИТЬ?
+SELL_FOR;Sell for;Продать за
+PRICE;Price;Цена
+RADIUS;Radius;Радиус
+DAMAGE;Damage;Урон
+FIRERATE;Fire rate;Скорострельность

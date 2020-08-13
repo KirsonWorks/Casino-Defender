@@ -1,0 +1,585 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scenes/common/post_effect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/game/scene_menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ui/ui_menu_item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://textures/logo.png" type="Texture" id=4]
+[ext_resource path="res://scripts/ui/ui_menu.gd" type="Script" id=5]
+[ext_resource path="res://scenes/game/menu_env.tscn" type="PackedScene" id=6]
+[ext_resource path="res://themes/ui_theme.tres" type="Theme" id=7]
+[ext_resource path="res://scenes/ui/ui_title.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/font_small.tres" type="DynamicFont" id=9]
+[ext_resource path="res://fonts/font_medium.tres" type="DynamicFont" id=10]
+[ext_resource path="res://scenes/ui/ui_slot_range.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/ui/ui_slot_array.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/ui/ui_slot_bool.tscn" type="PackedScene" id=13]
+[ext_resource path="res://themes/ui_theme_small.tres" type="Theme" id=14]
+[ext_resource path="res://fonts/font_nano.tres" type="DynamicFont" id=15]
+[ext_resource path="res://audio/music/01.ogg" type="AudioStream" id=16]
+[ext_resource path="res://textures/post-fx/fog.png" type="Texture" id=17]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 offset;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV + offset);
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/offset = null
+
+[node name="scene_menu" type="Node"]
+script = ExtResource( 2 )
+scene_fade_duration = 1.5
+scene_fade_delay = 0.2
+scene_start_fade_type = 0
+scene_finish_fade_type = 0
+
+[node name="vc" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="viewport" type="Viewport" parent="vc"]
+size = Vector2( 1280, 720 )
+size_override_stretch = true
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="camera" type="Camera" parent="vc/viewport"]
+transform = Transform( 1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0, 5.5, 1.5 )
+current = true
+
+[node name="menu_env" parent="vc/viewport" instance=ExtResource( 6 )]
+
+[node name="directional_light" type="DirectionalLight" parent="vc/viewport"]
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10.5, 0 )
+
+[node name="smoke" type="TextureRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_main_menu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="ui_main_menu"]
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -254.0
+margin_bottom = 2.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_item_new" parent="ui_main_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -24.0
+margin_right = 100.0
+margin_bottom = 18.0
+title = "NEWGAME"
+
+[node name="ui_item_options" parent="ui_main_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 32.432
+margin_right = 100.0
+margin_bottom = 74.432
+title = "SETTINGS"
+
+[node name="ui_item_credits" parent="ui_main_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 86.0
+margin_right = 100.0
+margin_bottom = 128.0
+title = "AUTHOR"
+
+[node name="ui_item_exit" parent="ui_main_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 169.0
+margin_right = 0.0
+margin_bottom = 211.0
+theme = ExtResource( 14 )
+title = "EXIT"
+
+[node name="ui_options_menu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.05261
+margin_top = -1.77377
+margin_right = 2.05261
+margin_bottom = -1.7738
+focus_mode = 2
+mouse_filter = 1
+theme = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+parent_menu = NodePath("../ui_main_menu")
+return_item = NodePath("ui_item_back")
+
+[node name="rect" type="ColorRect" parent="ui_options_menu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -2.0
+margin_top = -157.782
+margin_right = -2.0
+margin_bottom = 247.218
+color = Color( 1, 1, 1, 0.286275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" parent="ui_options_menu" instance=ExtResource( 8 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -155.0
+margin_right = 280.0
+margin_bottom = -100.0
+custom_colors/font_color = Color( 0.313726, 0.313726, 0.313726, 1 )
+text = "SETTINGS"
+
+[node name="label_audio" type="Label" parent="ui_options_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -148.0
+margin_right = 101.0
+margin_bottom = -107.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "AUDIO"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_video" type="Label" parent="ui_options_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 30.9999
+margin_right = 101.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "VIDEO"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_item_sounds" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -89.0
+margin_right = 30.0
+margin_bottom = -47.0
+title = "SOUNDS"
+slot = NodePath("../ui_range_sounds")
+
+[node name="ui_item_music" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -34.0
+margin_right = 30.0
+margin_bottom = 8.0
+title = "MUSIC"
+slot = NodePath("../ui_range_music")
+
+[node name="ui_item_resolution" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = 92.0
+margin_right = 30.0
+margin_bottom = 134.0
+title = "RESOLUTION"
+slot = NodePath("../ui_resolution")
+
+[node name="ui_item_fullscreen" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = 147.0
+margin_right = 30.0
+margin_bottom = 189.0
+title = "FULLSCREEN"
+slot = NodePath("../ui_fullscreen")
+
+[node name="ui_item_apply" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -95.5
+margin_top = -70.0
+margin_right = 95.5
+margin_bottom = -28.0
+title = "APPLY"
+click_confirm = true
+
+[node name="ui_item_default" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -235.0
+margin_top = -70.0
+margin_right = -45.0
+margin_bottom = -28.0
+theme = ExtResource( 14 )
+title = "DEFAULT"
+click_confirm = true
+
+[node name="ui_item_back" parent="ui_options_menu" instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = -70.0
+margin_right = 135.0
+margin_bottom = -28.0
+theme = ExtResource( 14 )
+title = "BACK"
+
+[node name="ui_range_sounds" parent="ui_options_menu" instance=ExtResource( 11 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -89.0
+margin_right = 230.0
+margin_bottom = -47.0
+maximum = 100
+value = 0.0
+step = 10.0
+
+[node name="ui_range_music" parent="ui_options_menu" instance=ExtResource( 11 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -34.0
+margin_right = 230.0
+margin_bottom = 8.0
+maximum = 100
+value = 0.0
+step = 10.0
+
+[node name="ui_resolution" parent="ui_options_menu" instance=ExtResource( 12 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = 92.0001
+margin_right = 230.0
+margin_bottom = 134.0
+backcolor = Color( 0.329412, 0.117647, 0.117647, 1 )
+updownAtClick = true
+data = [ "640x480", "800x600", "1024x768" ]
+cycle = true
+
+[node name="ui_fullscreen" parent="ui_options_menu" instance=ExtResource( 13 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = 147.0
+margin_right = 230.0
+margin_bottom = 189.0
+backcolor = Color( 0.329412, 0.117647, 0.117647, 1 )
+updownAtClick = true
+data = [ "NO", "YES" ]
+
+[node name="label_help" type="Label" parent="ui_options_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = 200.0
+margin_right = 512.0
+margin_bottom = 238.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "CHANGEHINT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_credits_menu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+parent_menu = NodePath("../ui_main_menu")
+return_item = NodePath("ui_item_back")
+
+[node name="rect" type="ColorRect" parent="ui_credits_menu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -156.0
+margin_bottom = 182.0
+color = Color( 1, 1, 1, 0.286275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" parent="ui_credits_menu" instance=ExtResource( 8 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -155.0
+margin_right = 197.0
+margin_bottom = -100.0
+custom_colors/font_color = Color( 0.313726, 0.313726, 0.313726, 1 )
+text = "AUTHOR"
+
+[node name="ui_item_back" parent="ui_credits_menu" instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 45.0
+margin_top = -70.0
+margin_right = 162.0
+margin_bottom = -28.0
+title = "BACK"
+
+[node name="label_author" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -142.0
+margin_right = 640.0
+margin_bottom = -108.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "PROGRAMMER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_author_name" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -97.5
+margin_right = 640.0
+margin_bottom = -56.5
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "AUTHOR_NAME"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_contacts" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -33.5
+margin_right = 640.0
+margin_bottom = 7.5
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "CONTACTS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_email" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = 10.0
+margin_right = 640.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "CONTACTS_LINE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_special" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = 79.5
+margin_right = 640.0
+margin_bottom = 120.5
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 0.513726, 0.176471, 1 )
+text = "SPECIAL_FOR"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label_special_name" type="Label" parent="ui_credits_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = 124.0
+margin_right = 640.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "SPECIAL_FOR_LINE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_exit_menu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 7 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+vertical = false
+parent_menu = NodePath("../ui_main_menu")
+return_item = NodePath("ui_item_no")
+
+[node name="ui_item_no" parent="ui_exit_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 20.0
+margin_right = -27.0
+margin_bottom = 65.0
+title = "NO"
+
+[node name="ui_item_yes" parent="ui_exit_menu" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 92.0
+margin_bottom = 65.0
+title = "YES"
+
+[node name="label" type="Label" parent="ui_exit_menu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -60.0
+margin_bottom = -20.0
+custom_colors/font_color = Color( 0.188235, 0.247059, 0.32549, 1 )
+text = "LEAVE_GAME_QUEST"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="post_effect" parent="." instance=ExtResource( 1 )]
+pause_mode = 2
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+bus = "Music"
+[connection signal="action" from="ui_main_menu/ui_item_new" to="." method="_on_menu_main_new_action"]
+[connection signal="action" from="ui_main_menu/ui_item_options" to="." method="_on_menu_main_options_action"]
+[connection signal="action" from="ui_main_menu/ui_item_credits" to="." method="_on_menu_credits_action"]
+[connection signal="action" from="ui_main_menu/ui_item_exit" to="." method="_on_ui_item_exit_action"]
+[connection signal="custom_close" from="ui_options_menu" to="." method="_on_menu_custom_close"]
+[connection signal="visibility_changed" from="ui_options_menu" to="." method="_on_menu_options_visibility_changed"]
+[connection signal="action" from="ui_options_menu/ui_item_apply" to="." method="_on_menu_options_apply_action"]
+[connection signal="action" from="ui_options_menu/ui_item_default" to="." method="_on_menu_options_default_action"]
+[connection signal="custom_close" from="ui_credits_menu" to="." method="_on_menu_custom_close"]
+[connection signal="custom_close" from="ui_exit_menu" to="." method="_on_menu_custom_close"]
+[connection signal="action" from="ui_exit_menu/ui_item_yes" to="." method="_on_menu_exit_yes_action"]

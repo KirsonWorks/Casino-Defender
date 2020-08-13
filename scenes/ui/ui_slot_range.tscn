@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ui/ui_slot_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/ui/ui_slot_range.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.211765, 0.341176, 0.192157, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="ui_slot_range" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+backcolor = Color( 0.164597, 0.269531, 0.148453, 1 )
+maximum = 99
+value = 99.0
+step = 1
+
+[node name="ui_rect" parent="." index="0"]
+color = Color( 0.164597, 0.269531, 0.148453, 1 )
+
+[node name="ui_progress" type="ProgressBar" parent="." index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 99.0
+step = 1.0
+value = 99.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

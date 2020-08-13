@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/ui/ui_slot_text.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/ui/ui_slot_array.gd" type="Script" id=2]
+
+[node name="ui_slot_array" instance=ExtResource( 1 )]
+margin_right = 110.0
+margin_bottom = 43.0
+script = ExtResource( 2 )
+backcolor = Color( 0.721569, 0.0705882, 0.0705882, 1 )
+
+[node name="ui_rect" parent="." index="1"]
+color = Color( 0.721569, 0.0705882, 0.0705882, 1 )
