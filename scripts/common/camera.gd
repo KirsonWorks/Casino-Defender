@@ -45,7 +45,7 @@ func _process(delta):
 	elif Input.is_action_pressed("player_move_right"):
 		move(MOVE_RIGHT)
 	
-	if Input.is_action_pressed("player_mode_down"):
+	if Input.is_action_pressed("player_move_down"):
 		move(MOVE_DOWN)
 	elif Input.is_action_pressed("player_move_up"):
 		move(MOVE_DOWN * -1)
