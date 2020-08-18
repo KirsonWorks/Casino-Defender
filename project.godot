@@ -58,8 +58,8 @@ window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/vsync_via_compositor=true
-window/stretch/aspect="expand"
 window/tablet_driver=""
+window/stretch/aspect="expand"
 
 [editor]
 
